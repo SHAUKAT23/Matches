@@ -1,4 +1,3 @@
-kho-tournament-website.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,6 +77,9 @@ kho-tournament-website.html
             background-color: #f8f9fa;
             border-radius: 8px;
         }
+        .table-container {
+            overflow-x: auto;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -126,11 +128,12 @@ kho-tournament-website.html
             overflow: hidden;
             margin: 20px 0;
             border-bottom: 2px solid #457b9d;
+            display: flex;
+            flex-wrap: wrap;
         }
         
         .tab-button {
             background-color: #f1faee;
-            float: left;
             border: none;
             outline: none;
             cursor: pointer;
@@ -140,6 +143,7 @@ kho-tournament-website.html
             font-weight: bold;
             border-radius: 5px 5px 0 0;
             margin-right: 5px;
+            flex: 1;
         }
         
         .tab-button:hover {
@@ -163,7 +167,7 @@ kho-tournament-website.html
         
         .scoreboard {
             width: 100%;
-            height: 500px; /* Adjust height as needed */
+            height: 500px;
             border: none;
             margin-top: 20px;
         }
@@ -171,6 +175,74 @@ kho-tournament-website.html
         @keyframes fadeEffect {
             from {opacity: 0;}
             to {opacity: 1;}
+        }
+        
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.4em;
+            }
+            
+            /* Make pools stack on mobile */
+            .pools {
+                flex-direction: column;
+            }
+            
+            .pool {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            /* Improve tab navigation */
+            .tab-button {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            /* Table responsive styles */
+            .table-container {
+                overflow-x: auto;
+            }
+            
+            /* Match details adjustments */
+            .teams {
+                font-size: 1.2em;
+            }
+            
+            .details {
+                margin-left: 5px;
+            }
+            
+            .scoreboard {
+                height: 350px;
+            }
+        }
+        
+        /* Extra small screens */
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .tab-button {
+                margin-right: 0;
+            }
+            
+            .scoreboard {
+                height: 300px;
+            }
         }
     </style>
 </head>
@@ -238,53 +310,55 @@ kho-tournament-website.html
                 
                 <div class="round-title">ROUND 1</div>
                 
-                <table>
-                    <tr>
-                        <th>Date</th>
-                        <th>Match 1</th>
-                        <th>Time</th>
-                        <th>Match 2</th>
-                        <th>Time</th>
-                        <th>Match 3</th>
-                        <th>Time</th>
-                    </tr>
-                    <tr>
-                        <td>Tuesday</td>
-                        <td>Staff vs CENSE</td>
-                        <td>7:00 PM</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Wednesday</td>
-                        <td>UG vs Bio Engineering</td>
-                        <td>5:30 PM</td>
-                        <td>DESE vs Staff</td>
-                        <td>7:15 PM</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Thursday</td>
-                        <td>CSA vs UG</td>
-                        <td>4:30 PM</td>
-                        <td>Civil Eng vs DESE</td>
-                        <td>5:30 PM</td>
-                        <td>Civil Eng vs CENSE</td>
-                        <td>8:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Friday</td>
-                        <td>DESE vs CENSE</td>
-                        <td>-</td>
-                        <td>Staff vs Civil Eng</td>
-                        <td>-</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <th>Match 1</th>
+                            <th>Time</th>
+                            <th>Match 2</th>
+                            <th>Time</th>
+                            <th>Match 3</th>
+                            <th>Time</th>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td>Staff vs CENSE</td>
+                            <td>7:00 PM</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td>UG vs Bio Engineering</td>
+                            <td>5:30 PM</td>
+                            <td>DESE vs Staff</td>
+                            <td>7:15 PM</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td>
+                            <td>CSA vs UG</td>
+                            <td>4:30 PM</td>
+                            <td>Civil Eng vs DESE</td>
+                            <td>5:30 PM</td>
+                            <td>Civil Eng vs CENSE</td>
+                            <td>8:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td>
+                            <td>DESE vs CENSE</td>
+                            <td>-</td>
+                            <td>Staff vs Civil Eng</td>
+                            <td>-</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
                 
                 <div class="round-title">ROUND 2</div>
                 
@@ -322,6 +396,24 @@ kho-tournament-website.html
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
+        
+        // Check screen size and adjust tab UI
+        function checkScreenSize() {
+            const tabButtons = document.getElementsByClassName("tab-button");
+            if (window.innerWidth <= 480) {
+                for (let i = 0; i < tabButtons.length; i++) {
+                    tabButtons[i].style.width = (100 / tabButtons.length) + "%";
+                }
+            } else {
+                for (let i = 0; i < tabButtons.length; i++) {
+                    tabButtons[i].style.width = "";
+                }
+            }
+        }
+        
+        // Run on page load and resize
+        window.onload = checkScreenSize;
+        window.onresize = checkScreenSize;
     </script>
 </body>
 </html>
