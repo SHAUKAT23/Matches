@@ -20,104 +20,34 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        h1 {
-            color: #e63946;
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 5px;
-        }
-        h2 {
-            color: #457b9d;
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 30px;
-        }
-        .venue {
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 30px;
-            font-size: 1.2em;
-            color: #e63946;
-        }
-        .matches-container {
-            margin-bottom: 30px;
-        }
-        .match {
-            background-color: #f1faee;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            border-left: 5px solid #1d3557;
-        }
-        .teams {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #1d3557;
-            margin-bottom: 10px;
-        }
-        .details {
-            margin-left: 15px;
-        }
-        .detail {
-            margin: 5px 0;
-        }
-        .icon {
-            margin-right: 10px;
-        }
-        .cta {
-            text-align: center;
-            margin: 30px 0;
-            font-weight: bold;
-            font-size: 1.2em;
-            color: #e63946;
-        }
-        .schedule {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #457b9d;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        .pools {
+        .tabs {
             display: flex;
             justify-content: space-around;
-            margin-bottom: 20px;
-        }
-        .pool {
-            width: 45%;
-        }
-        .pool h3 {
-            text-align: center;
-            color: #1d3557;
-        }
-        .round-title {
             background-color: #1d3557;
-            color: white;
             padding: 10px;
-            margin: 20px 0 10px 0;
+            border-radius: 8px;
+        }
+        .tab {
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+        .tab:hover {
+            background-color: #457b9d;
             border-radius: 5px;
         }
-        .women {
-            border-left: 5px solid #9c27b0;
+        .content {
+            display: none;
+            padding: 20px;
         }
-        .men {
-            border-left: 5px solid #1d3557;
+        .active {
+            display: block;
+        }
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
         }
     </style>
 </head>
@@ -125,58 +55,14 @@
     <div class="container">
         <h1>SPECTRUM TOURNAMENT</h1>
         <h2>KHO-KHO MATCHES</h2>
-        
-        <div class="venue">
-            <p><span class="icon">📍</span> All matches at TMC Ground</p>
+
+        <div class="tabs">
+            <div class="tab" onclick="showTab('matches')">Matches</div>
+            <div class="tab" onclick="showTab('scoreboard')">Scoreboard</div>
         </div>
-        
-        <div class="matches-container">
-            <div class="match men">
-                <div class="teams">MEN'S MATCH: STAFF vs CENSE</div>
-                <div class="details">
-                    <p class="detail"><span class="icon">📅</span> Tuesday, 8th April 2025</p>
-                    <p class="detail"><span class="icon">🕖</span> 7:00 PM</p>
-                </div>
-            </div>
-            
-            <div class="match women">
-                <div class="teams">WOMEN'S MATCH: CIVIL vs UG</div>
-                <div class="details">
-                    <p class="detail"><span class="icon">📅</span> Tuesday, 8th April 2025</p>
-                    <p class="detail"><span class="icon">🕗</span> 8:00 PM</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="cta">
-            COME SUPPORT YOUR TEAM!
-        </div>
-        
-        <div class="schedule">
+
+        <div id="matches" class="content active">
             <h2>Men's Tournament Schedule</h2>
-            
-            <div class="pools">
-                <div class="pool">
-                    <h3>Pool A</h3>
-                    <ul>
-                        <li>Bio Engineering (1)</li>
-                        <li>CSA (3)</li>
-                        <li>UG (5)</li>
-                    </ul>
-                </div>
-                <div class="pool">
-                    <h3>Pool B</h3>
-                    <ul>
-                        <li>Civil (2)</li>
-                        <li>DESE (4)</li>
-                        <li>Staff (6)</li>
-                        <li>CENSE (8)</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="round-title">ROUND 1</div>
-            
             <table>
                 <tr>
                     <th>Date</th>
@@ -205,32 +91,20 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <tr>
-                    <td>Thursday</td>
-                    <td>CSA vs UG</td>
-                    <td>4:30 PM</td>
-                    <td>Civil Eng vs DESE</td>
-                    <td>5:30 PM</td>
-                    <td>Civil Eng vs CENSE</td>
-                    <td>8:00 PM</td>
-                </tr>
-                <tr>
-                    <td>Friday</td>
-                    <td>DESE vs CENSE</td>
-                    <td>-</td>
-                    <td>Staff vs Civil Eng</td>
-                    <td>-</td>
-                    <td></td>
-                    <td></td>
-                </tr>
             </table>
-            
-            <div class="round-title">ROUND 2</div>
-            
-            <p><strong>Semifinal 1:</strong> Between Pool B 1st position vs Pool A 2nd position</p>
-            <p><strong>Semifinal qualifier:</strong> Between Pool B 2nd and 3rd position</p>
-            <p><strong>Semifinal 2:</strong> Semifinal qualifier winner vs Pool A 1st position</p>
+        </div>
+
+        <div id="scoreboard" class="content">
+            <h2>Live Scoreboard</h2>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQVIjDOrE4ZoZ62KiMIDgRL4dfvJMQfHFWzMmDUtwozZMlD1_XEIc4gEVteXte04xs7cQ8eVa-4YvWi/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
         </div>
     </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
 </body>
 </html>
