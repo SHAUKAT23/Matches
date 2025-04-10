@@ -1,3 +1,4 @@
+Matches/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,247 +148,274 @@
             <p><span class="icon">📍</span> All matches at TMC Ground</p>
         </div>
         
-        <!-- Tab Navigation -->
-        <div class="tabs">
-            <button class="tab-button active" onclick="openTab(event, 'schedule-tab')">Schedule</button>
-            <button class="tab-button" onclick="openTab(event, 'scoreboard-tab')">Scoreboard</button>
+        <!-- Main Tab Navigation -->
+        <div id="main-tabs" class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'schedule-tab', 'main-content')">Schedule</button>
+            <button class="tab-button" onclick="openTab(event, 'scoreboard-tab', 'main-content')">Scoreboard</button>
         </div>
         
-        <!-- Schedule Tab Content -->
-        <div id="schedule-tab" class="tab-content active">
-            <h2>Men's Match Schedule (ROUND 1)</h2>
+        <div id="main-content">
+            <!-- Schedule Tab Content -->
+            <div id="schedule-tab" class="tab-content active">
+                <h2>Men's Match Schedule (ROUND 1)</h2>
 
-            <!-- Nested Tabs for Days -->
-            <div class="tabs">
-                <button class="tab-button active" onclick="openTab(event, 'monday-tab')">Monday</button>
-                <button class="tab-button" onclick="openTab(event, 'tuesday-tab')">Tuesday</button>
-                <button class="tab-button" onclick="openTab(event, 'thursday-tab')">Thursday</button>
-                <button class="tab-button" onclick="openTab(event, 'friday-tab')">Friday</button>
-                <button class="tab-button" onclick="openTab(event, 'saturday-tab')">Saturday</button>
-            </div>
+                <!-- Nested Tabs for Days -->
+                <div id="days-tabs" class="tabs">
+                    <button class="tab-button active" onclick="openTab(event, 'monday-tab', 'days-content')">Monday</button>
+                    <button class="tab-button" onclick="openTab(event, 'tuesday-tab', 'days-content')">Tuesday</button>
+                    <button class="tab-button" onclick="openTab(event, 'thursday-tab', 'days-content')">Thursday</button>
+                    <button class="tab-button" onclick="openTab(event, 'friday-tab', 'days-content')">Friday</button>
+                    <button class="tab-button" onclick="openTab(event, 'saturday-tab', 'days-content')">Saturday</button>
+                </div>
 
-            <!-- Monday Tab Content -->
-            <div id="monday-tab" class="tab-content active">
-                <div class="matches-container">
-                    <div class="match men">
-                        <div class="teams">MEN'S MATCH: Bio VS CSA</div>
-                        <div class="details">
-                            <p class="detail"><span class="icon">📅</span> Monday, 7th April 2025</p>
-                            <p class="detail"><span class="icon">✔</span> Completed</p>
+                <div id="days-content">
+                    <!-- Monday Tab Content -->
+                    <div id="monday-tab" class="tab-content active">
+                        <div class="matches-container">
+                            <div class="match men">
+                                <div class="teams">MEN'S MATCH: Bio VS CSA</div>
+                                <div class="details">
+                                    <p class="detail"><span class="icon">📅</span> Monday, 7th April 2025</p>
+                                    <p class="detail"><span class="icon">✔</span> Completed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tuesday Tab Content -->
+                    <div id="tuesday-tab" class="tab-content">
+                        <div class="matches-container">
+                            <div class="match men">
+                                <div class="teams">MEN'S MATCH: Civil VS DESE</div>
+                                <div class="details">
+                                    <p class="detail"><span class="icon">📅</span> Tuesday, 8th April 2025</p>
+                                    <p class="detail"><span class="icon">✔</span> Completed</p>
+                                </div>
+                            </div>
+                            <div class="match men">
+                                <div class="teams">MEN'S MATCH: Staff VS CENSE</div>
+                                <div class="details">
+                                    <p class="detail"><span class="icon">📅</span> Tuesday, 8th April 2025</p>
+                                    <p class="detail"><span class="icon">✔</span> Completed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Thursday Tab Content -->
+                    <div id="thursday-tab" class="tab-content">
+                        <div class="matches-container">
+                            <div class="match men">
+                                <div class="teams">MEN'S MATCH: CSA VS UG</div>
+                                <div class="details">
+                                    <p class="detail"><span class="icon">📅</span> Thursday, 10th April 2025</p>
+                                    <p class="detail"><span class="icon">🕖</span> 7:00 PM</p>
+                                </div>
+                            </div>
+                            <div class="match men">
+                                <div class="teams">MEN'S MATCH: DESE VS Staff</div>
+                                <div class="details">
+                                    <p class="detail"><span class="icon">📅</span> Thursday, 10th April 2025</p>
+                                    <p class="detail"><span class="icon">🕗</span> 8:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Friday Tab Content -->
+                    <div id="friday-tab" class="tab-content">
+                        <div class="matches-container">
+                            <div class="match men">
+                                <div class="teams">MEN'S MATCH: UG VS BE</div>
+                                <div class="details">
+                                    <p class="detail"><span class="icon">📅</span> Friday, 11th April 2025</p>
+                                    <p class="detail"><span class="icon">🕖</span> 7:00 PM</p>
+                                </div>
+                            </div>
+                            <div class="match men">
+                                <div class="teams">MEN'S MATCH: Civil VS CENSE</div>
+                                <div class="details">
+                                    <p class="detail"><span class="icon">📅</span> Friday, 11th April 2025</p>
+                                    <p class="detail"><span class="icon">🕗</span> 8:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Saturday Tab Content -->
+                    <div id="saturday-tab" class="tab-content">
+                        <div class="matches-container">
+                            <div class="match men">
+                                <div class="teams">MEN'S MATCH: Civil VS Staff</div>
+                                <div class="details">
+                                    <p class="detail"><span class="icon">📅</span> Saturday, 12th April 2025</p>
+                                    <p class="detail"><span class="icon">🕖</span> 7:00 PM</p>
+                                </div>
+                            </div>
+                            <div class="match men">
+                                <div class="teams">MEN'S MATCH: DESE VS CENSE</div>
+                                <div class="details">
+                                    <p class="detail"><span class="icon">📅</span> Saturday, 12th April 2025</p>
+                                    <p class="detail"><span class="icon">🕗</span> 8:00 PM</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Tuesday Tab Content -->
-            <div id="tuesday-tab" class="tab-content">
-                <div class="matches-container">
-                    <div class="match men">
-                        <div class="teams">MEN'S MATCH: Civil VS DESE</div>
-                        <div class="details">
-                            <p class="detail"><span class="icon">📅</span> Tuesday, 8th April 2025</p>
-                            <p class="detail"><span class="icon">✔</span> Completed</p>
+                <!-- Men's Tournament Schedule -->
+                <div class="schedule">
+                    <h2>Men's Tournament Schedule</h2>
+                    
+                    <div class="pools">
+                        <div class="pool">
+                            <h3>Pool A</h3>
+                            <ul>
+                                <li>Bio Engineering (1)</li>
+                                <li>CSA (3)</li>
+                                <li>UG (5)</li>
+                            </ul>
+                        </div>
+                        <div class="pool">
+                            <h3>Pool B</h3>
+                            <ul>
+                                <li>Civil (2)</li>
+                                <li>DESE (4)</li>
+                                <li>Staff (6)</li>
+                                <li>CENSE (8)</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="match men">
-                        <div class="teams">MEN'S MATCH: Staff VS CENSE</div>
-                        <div class="details">
-                            <p class="detail"><span class="icon">📅</span> Tuesday, 8th April 2025</p>
-                            <p class="detail"><span class="icon">✔</span> Completed</p>
-                        </div>
+                    
+                    <div class="round-title">ROUND 1</div>
+                    
+                    <div class="table-container">
+                        <table>
+                            <tr>
+                                <th>Date</th>
+                                <th>Match 1</th>
+                                <th>Time</th>
+                                <th>Match 2</th>
+                                <th>Time</th>
+                            </tr>
+                            <tr>
+                                <td>Monday</td>
+                                <td>Bio VS CSA</td>
+                                <td>Completed</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>Civil VS DESE</td>
+                                <td>Completed</td>
+                                <td>Staff VS CENSE</td>
+                                <td>Completed</td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td>CSA VS UG</td>
+                                <td>7:00 PM</td>
+                                <td>DESE VS Staff</td>
+                                <td>8:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td>UG VS BE</td>
+                                <td>7:00 PM</td>
+                                <td>Civil VS CENSE</td>
+                                <td>8:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td>Civil VS Staff</td>
+                                <td>7:00 PM</td>
+                                <td>DESE VS CENSE</td>
+                                <td>8:00 PM</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-            </div>
-
-            <!-- Thursday Tab Content -->
-            <div id="thursday-tab" class="tab-content">
-                <div class="matches-container">
-                    <div class="match men">
-                        <div class="teams">MEN'S MATCH: CSA VS UG</div>
-                        <div class="details">
-                            <p class="detail"><span class="icon">📅</span> Thursday, 10th April 2025</p>
-                            <p class="detail"><span class="icon">🕖</span> 7:00 PM</p>
-                        </div>
-                    </div>
-                    <div class="match men">
-                        <div class="teams">MEN'S MATCH: DESE VS Staff</div>
-                        <div class="details">
-                            <p class="detail"><span class="icon">📅</span> Thursday, 10th April 2025</p>
-                            <p class="detail"><span class="icon">🕗</span> 8:00 PM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Friday Tab Content -->
-            <div id="friday-tab" class="tab-content">
-                <div class="matches-container">
-                    <div class="match men">
-                        <div class="teams">MEN'S MATCH: UG VS BE</div>
-                        <div class="details">
-                            <p class="detail"><span class="icon">📅</span> Friday, 11th April 2025</p>
-                            <p class="detail"><span class="icon">🕖</span> 7:00 PM</p>
-                        </div>
-                    </div>
-                    <div class="match men">
-                        <div class="teams">MEN'S MATCH: Civil VS CENSE</div>
-                        <div class="details">
-                            <p class="detail"><span class="icon">📅</span> Friday, 11th April 2025</p>
-                            <p class="detail"><span class="icon">🕗</span> 8:00 PM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Saturday Tab Content -->
-            <div id="saturday-tab" class="tab-content">
-                <div class="matches-container">
-                    <div class="match men">
-                        <div class="teams">MEN'S MATCH: Civil VS Staff</div>
-                        <div class="details">
-                            <p class="detail"><span class="icon">📅</span> Saturday, 12th April 2025</p>
-                            <p class="detail"><span class="icon">🕖</span> 7:00 PM</p>
-                        </div>
-                    </div>
-                    <div class="match men">
-                        <div class="teams">MEN'S MATCH: DESE VS CENSE</div>
-                        <div class="details">
-                            <p class="detail"><span class="icon">📅</span> Saturday, 12th April 2025</p>
-                            <p class="detail"><span class="icon">🕗</span> 8:00 PM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Men's Tournament Schedule -->
-            <div class="schedule">
-                <h2>Men's Tournament Schedule</h2>
                 
-                <div class="pools">
-                    <div class="pool">
-                        <h3>Pool A</h3>
-                        <ul>
-                            <li>Bio Engineering (1)</li>
-                            <li>CSA (3)</li>
-                            <li>UG (5)</li>
-                        </ul>
-                    </div>
-                    <div class="pool">
-                        <h3>Pool B</h3>
-                        <ul>
-                            <li>Civil (2)</li>
-                            <li>DESE (4)</li>
-                            <li>Staff (6)</li>
-                            <li>CENSE (8)</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="round-title">ROUND 1</div>
-                
-                <div class="table-container">
-                    <table>
-                        <tr>
-                            <th>Date</th>
-                            <th>Match 1</th>
-                            <th>Time</th>
-                            <th>Match 2</th>
-                            <th>Time</th>
-                        </tr>
-                        <tr>
-                            <td>Monday</td>
-                            <td>Bio VS CSA</td>
-                            <td>Completed</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td>Civil VS DESE</td>
-                            <td>Completed</td>
-                            <td>Staff VS CENSE</td>
-                            <td>Completed</td>
-                        </tr>
-                        <tr>
-                            <td>Thursday</td>
-                            <td>CSA VS UG</td>
-                            <td>7:00 PM</td>
-                            <td>DESE VS Staff</td>
-                            <td>8:00 PM</td>
-                        </tr>
-                        <tr>
-                            <td>Friday</td>
-                            <td>UG VS BE</td>
-                            <td>7:00 PM</td>
-                            <td>Civil VS CENSE</td>
-                            <td>8:00 PM</td>
-                        </tr>
-                        <tr>
-                            <td>Saturday</td>
-                            <td>Civil VS Staff</td>
-                            <td>7:00 PM</td>
-                            <td>DESE VS CENSE</td>
-                            <td>8:00 PM</td>
-                        </tr>
-                    </table>
-                </div>
+                <div class="round-title">ROUND 2</div>
+                <p><strong>Semifinal 1:</strong> Between Pool B 1st position vs Pool A 2nd position</p>
+                <p><strong>Semifinal qualifier:</strong> Between Pool B 2nd and 3rd position</p>
+                <p><strong>Semifinal 2:</strong> Semifinal qualifier winner vs Pool A 1st position</p>
+            </div>
+
+            <!-- Scoreboard Tab Content -->
+            <div id="scoreboard-tab" class="tab-content">
+                <h2>Tournament Scoreboard</h2>
+                <iframe class="scoreboard" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQVIjDOrE4ZoZ62KiMIDgRL4dfvJMQfHFWzMmDUtwozZMlD1_XEIc4gEVteXte04xs7cQ8eVa-4YvWi/pubhtml?widget=true&amp;headers=false"></iframe>
             </div>
         </div>
-        
-        <div class="round-title">ROUND 2</div>
-        <p><strong>Semifinal 1:</strong> Between Pool B 1st position vs Pool A 2nd position</p>
-        <p><strong>Semifinal qualifier:</strong> Between Pool B 2nd and 3rd position</p>
-        <p><strong>Semifinal 2:</strong> Semifinal qualifier winner vs Pool A 1st position</p>
     </div>
 
-    <!-- Scoreboard Tab Content -->
-    <div id="scoreboard-tab" class="tab-content">
-        <h2>Tournament Scoreboard</h2>
-        <iframe class="scoreboard" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQVIjDOrE4ZoZ62KiMIDgRL4dfvJMQfHFWzMmDUtwozZMlD1_XEIc4gEVteXte04xs7cQ8eVa-4YvWi/pubhtml?widget=true&amp;headers=false"></iframe>
-    </div>
-</div>
-
-<script>
-    function openTab(evt, tabName) {
-        // Hide all tab contents
-        const tabContents = document.getElementsByClassName("tab-content");
-        for (let i = 0; i < tabContents.length; i++) {
-            tabContents[i].classList.remove("active");
-        }
-
-        // Remove active class from all tab buttons
-        const tabButtons = evt.currentTarget.parentNode.getElementsByClassName("tab-button");
-        for (let i = 0; i < tabButtons.length; i++) {
-            tabButtons[i].classList.remove("active");
-        }
-
-        // Show the selected tab and mark the button as active
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
-    }
-
-    // Automatically set the default tab based on today's date
-    window.onload = function () {
-        const today = new Date();
-        const day = today.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-        const dayTabs = {
-            1: "monday-tab",
-            2: "tuesday-tab",
-            4: "thursday-tab",
-            5: "friday-tab",
-            6: "saturday-tab"
-        };
-
-        const defaultTab = dayTabs[day] || "monday-tab"; // Default to Monday if no match
-        document.getElementById(defaultTab).classList.add("active");
-
-        const tabButtons = document.querySelectorAll(".tab-button");
-        tabButtons.forEach((button) => {
-            if (button.getAttribute("onclick").includes(defaultTab)) {
-                button.classList.add("active");
+    <script>
+        function openTab(evt, tabName, parentContainerId) {
+            // Get the parent container
+            const parentContainer = document.getElementById(parentContainerId);
+            
+            // Hide all tab contents within the parent container
+            const tabContents = parentContainer.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
             }
-        });
-    };
-</script>
+            
+            // Get the container that has the tab buttons
+            let tabButtonsContainer;
+            if (parentContainerId === 'main-content') {
+                tabButtonsContainer = document.getElementById('main-tabs');
+            } else if (parentContainerId === 'days-content') {
+                tabButtonsContainer = document.getElementById('days-tabs');
+            } else {
+                tabButtonsContainer = document;
+            }
+            
+            // Remove active class from all tab buttons
+            const tabButtons = tabButtonsContainer.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Show the selected tab content and mark button as active
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Initialize tabs on page load
+        window.onload = function() {
+            // Set default main tab
+            document.getElementById("schedule-tab").classList.add("active");
+            document.querySelector("#main-tabs .tab-button").classList.add("active");
+            
+            // Set default day tab based on current day
+            const today = new Date();
+            const day = today.getDay(); // 0=Sunday, 1=Monday, etc.
+            
+            const dayTabs = {
+                1: "monday-tab",
+                2: "tuesday-tab",
+                4: "thursday-tab",
+                5: "friday-tab",
+                6: "saturday-tab"
+            };
+            
+            // Default to Monday if not a match or weekend
+            const defaultDayTab = dayTabs[day] || "monday-tab";
+            
+            // Set the active day tab
+            document.getElementById(defaultDayTab).classList.add("active");
+            
+            // Find and set active day tab button
+            document.querySelectorAll("#days-tabs .tab-button").forEach(button => {
+                if (button.getAttribute("onclick").includes(defaultDayTab)) {
+                    button.classList.add("active");
+                } else {
+                    button.classList.remove("active");
+                }
+            });
+        };
+    </script>
 </body>
 </html>
