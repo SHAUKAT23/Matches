@@ -97,33 +97,6 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-        .pools {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-        }
-        .pool {
-            width: 45%;
-        }
-        .pool h3 {
-            text-align: center;
-            color: #1d3557;
-        }
-        .round-title {
-            background-color: #1d3557;
-            color: white;
-            padding: 10px;
-            margin: 20px 0 10px 0;
-            border-radius: 5px;
-        }
-        .women {
-            border-left: 5px solid #9c27b0;
-        }
-        .men {
-            border-left: 5px solid #1d3557;
-        }
-        
-        /* Tab Navigation Styles */
         .tabs {
             overflow: hidden;
             margin: 20px 0;
@@ -131,7 +104,6 @@
             display: flex;
             flex-wrap: wrap;
         }
-        
         .tab-button {
             background-color: #f1faee;
             border: none;
@@ -145,104 +117,24 @@
             margin-right: 5px;
             flex: 1;
         }
-        
         .tab-button:hover {
             background-color: #ddd;
         }
-        
         .tab-button.active {
             background-color: #457b9d;
             color: white;
         }
-        
         .tab-content {
             display: none;
             padding: 6px 12px;
             animation: fadeEffect 1s;
         }
-        
         .tab-content.active {
             display: block;
         }
-        
-        .scoreboard {
-            width: 100%;
-            height: 500px;
-            border: none;
-            margin-top: 20px;
-        }
-        
         @keyframes fadeEffect {
             from {opacity: 0;}
             to {opacity: 1;}
-        }
-        
-        /* Responsive styles */
-        @media screen and (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            .container {
-                padding: 15px;
-            }
-            
-            h1 {
-                font-size: 1.8em;
-            }
-            
-            h2 {
-                font-size: 1.4em;
-            }
-            
-            /* Make pools stack on mobile */
-            .pools {
-                flex-direction: column;
-            }
-            
-            .pool {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            
-            /* Improve tab navigation */
-            .tab-button {
-                padding: 10px;
-                font-size: 14px;
-            }
-            
-            /* Table responsive styles */
-            .table-container {
-                overflow-x: auto;
-            }
-            
-            /* Match details adjustments */
-            .teams {
-                font-size: 1.2em;
-            }
-            
-            .details {
-                margin-left: 5px;
-            }
-            
-            .scoreboard {
-                height: 350px;
-            }
-        }
-        
-        /* Extra small screens */
-        @media screen and (max-width: 480px) {
-            h1 {
-                font-size: 1.5em;
-            }
-            
-            .tab-button {
-                margin-right: 0;
-            }
-            
-            .scoreboard {
-                height: 300px;
-            }
         }
     </style>
 </head>
@@ -260,34 +152,114 @@
             <button class="tab-button active" onclick="openTab(event, 'schedule-tab')">Schedule</button>
             <button class="tab-button" onclick="openTab(event, 'scoreboard-tab')">Scoreboard</button>
         </div>
-        No matches scheduled today. Check back later for updates!
         
         <!-- Schedule Tab Content -->
-        <!--<div id="schedule-tab" class="tab-content active">
-            <div class="matches-container">
-                <div class="match women">
-                    <div class="teams">WOMEN'S MATCH: CENSE vs DESE</div>
-                    <div class="details">
-                        <p class="detail"><span class="icon">📅</span> Wednesday, 9th April 2025</p>
-                        <p class="detail"><span class="icon">🕡</span> 6:30 PM</p>
-                    </div>
-                </div>
+        <div id="schedule-tab" class="tab-content active">
+            <h2>Men's Match Schedule (ROUND 1)</h2>
 
-                <div class="match men">
-                    <div class="teams">MEN'S MATCH: DESE vs STAFF</div>
-                    <div class="details">
-                        <p class="detail"><span class="icon">📅</span> Wednesday, 9th April 2025</p>
-                        <p class="detail"><span class="icon">🕡</span> 7:30 PM</p>
+            <!-- Nested Tabs for Days -->
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab(event, 'monday-tab')">Monday</button>
+                <button class="tab-button" onclick="openTab(event, 'tuesday-tab')">Tuesday</button>
+                <button class="tab-button" onclick="openTab(event, 'thursday-tab')">Thursday</button>
+                <button class="tab-button" onclick="openTab(event, 'friday-tab')">Friday</button>
+                <button class="tab-button" onclick="openTab(event, 'saturday-tab')">Saturday</button>
+            </div>
+
+            <!-- Monday Tab Content -->
+            <div id="monday-tab" class="tab-content active">
+                <div class="matches-container">
+                    <div class="match men">
+                        <div class="teams">MEN'S MATCH: Bio VS CSA</div>
+                        <div class="details">
+                            <p class="detail"><span class="icon">📅</span> Monday, 7th April 2025</p>
+                            <p class="detail"><span class="icon">✔</span> Completed</p>
+                        </div>
                     </div>
                 </div>
-                
-                
             </div>
-            -->
-            <div class="cta">
-                COME SUPPORT YOUR TEAM!
+
+            <!-- Tuesday Tab Content -->
+            <div id="tuesday-tab" class="tab-content">
+                <div class="matches-container">
+                    <div class="match men">
+                        <div class="teams">MEN'S MATCH: Civil VS DESE</div>
+                        <div class="details">
+                            <p class="detail"><span class="icon">📅</span> Tuesday, 8th April 2025</p>
+                            <p class="detail"><span class="icon">✔</span> Completed</p>
+                        </div>
+                    </div>
+                    <div class="match men">
+                        <div class="teams">MEN'S MATCH: Staff VS CENSE</div>
+                        <div class="details">
+                            <p class="detail"><span class="icon">📅</span> Tuesday, 8th April 2025</p>
+                            <p class="detail"><span class="icon">✔</span> Completed</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
+
+            <!-- Thursday Tab Content -->
+            <div id="thursday-tab" class="tab-content">
+                <div class="matches-container">
+                    <div class="match men">
+                        <div class="teams">MEN'S MATCH: CSA VS UG</div>
+                        <div class="details">
+                            <p class="detail"><span class="icon">📅</span> Thursday, 10th April 2025</p>
+                            <p class="detail"><span class="icon">🕖</span> 7:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="match men">
+                        <div class="teams">MEN'S MATCH: DESE VS Staff</div>
+                        <div class="details">
+                            <p class="detail"><span class="icon">📅</span> Thursday, 10th April 2025</p>
+                            <p class="detail"><span class="icon">🕗</span> 8:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Friday Tab Content -->
+            <div id="friday-tab" class="tab-content">
+                <div class="matches-container">
+                    <div class="match men">
+                        <div class="teams">MEN'S MATCH: UG VS BE</div>
+                        <div class="details">
+                            <p class="detail"><span class="icon">📅</span> Friday, 11th April 2025</p>
+                            <p class="detail"><span class="icon">🕖</span> 7:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="match men">
+                        <div class="teams">MEN'S MATCH: Civil VS CENSE</div>
+                        <div class="details">
+                            <p class="detail"><span class="icon">📅</span> Friday, 11th April 2025</p>
+                            <p class="detail"><span class="icon">🕗</span> 8:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saturday Tab Content -->
+            <div id="saturday-tab" class="tab-content">
+                <div class="matches-container">
+                    <div class="match men">
+                        <div class="teams">MEN'S MATCH: Civil VS Staff</div>
+                        <div class="details">
+                            <p class="detail"><span class="icon">📅</span> Saturday, 12th April 2025</p>
+                            <p class="detail"><span class="icon">🕖</span> 7:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="match men">
+                        <div class="teams">MEN'S MATCH: DESE VS CENSE</div>
+                        <div class="details">
+                            <p class="detail"><span class="icon">📅</span> Saturday, 12th April 2025</p>
+                            <p class="detail"><span class="icon">🕗</span> 8:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Men's Tournament Schedule -->
             <div class="schedule">
                 <h2>Men's Tournament Schedule</h2>
                 
@@ -321,93 +293,101 @@
                             <th>Time</th>
                             <th>Match 2</th>
                             <th>Time</th>
-                            <th>Match 3</th>
-                            <th>Time</th>
                         </tr>
                         <tr>
-                            <td>Wednesday</td>
-                            <td>UG vs Bio Engineering</td>
-                            <td>5:30 PM</td>
-                            <td>DESE vs Staff</td>
-                            <td>7:15 PM</td>
+                            <td>Monday</td>
+                            <td>Bio VS CSA</td>
+                            <td>Completed</td>
                             <td></td>
                             <td></td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td>Civil VS DESE</td>
+                            <td>Completed</td>
+                            <td>Staff VS CENSE</td>
+                            <td>Completed</td>
                         </tr>
                         <tr>
                             <td>Thursday</td>
-                            <td>CSA vs UG</td>
-                            <td>4:30 PM</td>
-                            <td>Civil Eng vs DESE</td>
-                            <td>5:30 PM</td>
-                            <td>Civil Eng vs CENSE</td>
+                            <td>CSA VS UG</td>
+                            <td>7:00 PM</td>
+                            <td>DESE VS Staff</td>
                             <td>8:00 PM</td>
                         </tr>
                         <tr>
                             <td>Friday</td>
-                            <td>DESE vs CENSE</td>
-                            <td>-</td>
-                            <td>Staff vs Civil Eng</td>
-                            <td>-</td>
-                            <td></td>
-                            <td></td>
+                            <td>UG VS BE</td>
+                            <td>7:00 PM</td>
+                            <td>Civil VS CENSE</td>
+                            <td>8:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td>
+                            <td>Civil VS Staff</td>
+                            <td>7:00 PM</td>
+                            <td>DESE VS CENSE</td>
+                            <td>8:00 PM</td>
                         </tr>
                     </table>
                 </div>
-                
-                <div class="round-title">ROUND 2</div>
-                
-                <p><strong>Semifinal 1:</strong> Between Pool A 1st position vs Pool B 2nd position</p>
-                <p><strong>Semifinal qualifier:</strong> Between Pool A 2nd and Pool B 3rd position</p>
-                <p><strong>Semifinal 2:</strong> Semifinal qualifier winner vs Pool B 1st position</p>
             </div>
         </div>
         
-        <!-- Scoreboard Tab Content -->
-        <div id="scoreboard-tab" class="tab-content">
-            <h2>Tournament Scoreboard</h2>
-            <iframe class="scoreboard" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQVIjDOrE4ZoZ62KiMIDgRL4dfvJMQfHFWzMmDUtwozZMlD1_XEIc4gEVteXte04xs7cQ8eVa-4YvWi/pubhtml?widget=true&amp;headers=false"></iframe>
-        </div>
+        <div class="round-title">ROUND 2</div>
+        <p><strong>Semifinal 1:</strong> Between Pool B 1st position vs Pool A 2nd position</p>
+        <p><strong>Semifinal qualifier:</strong> Between Pool B 2nd and 3rd position</p>
+        <p><strong>Semifinal 2:</strong> Semifinal qualifier winner vs Pool A 1st position</p>
     </div>
 
-    <script>
-        function openTab(evt, tabName) {
-            // Declare all variables
-            let i, tabContent, tabButtons;
-            
-            // Get all elements with class="tab-content" and hide them
-            tabContent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabContent.length; i++) {
-                tabContent[i].classList.remove("active");
-            }
-            
-            // Get all elements with class="tab-button" and remove the class "active"
-            tabButtons = document.getElementsByClassName("tab-button");
-            for (i = 0; i < tabButtons.length; i++) {
-                tabButtons[i].classList.remove("active");
-            }
-            
-            // Show the current tab, and add an "active" class to the button that opened the tab
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+    <!-- Scoreboard Tab Content -->
+    <div id="scoreboard-tab" class="tab-content">
+        <h2>Tournament Scoreboard</h2>
+        <iframe class="scoreboard" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQVIjDOrE4ZoZ62KiMIDgRL4dfvJMQfHFWzMmDUtwozZMlD1_XEIc4gEVteXte04xs7cQ8eVa-4YvWi/pubhtml?widget=true&amp;headers=false"></iframe>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        // Hide all tab contents
+        const tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.remove("active");
         }
-        
-        // Check screen size and adjust tab UI
-        function checkScreenSize() {
-            const tabButtons = document.getElementsByClassName("tab-button");
-            if (window.innerWidth <= 480) {
-                for (let i = 0; i < tabButtons.length; i++) {
-                    tabButtons[i].style.width = (100 / tabButtons.length) + "%";
-                }
-            } else {
-                for (let i = 0; i < tabButtons.length; i++) {
-                    tabButtons[i].style.width = "";
-                }
-            }
+
+        // Remove active class from all tab buttons
+        const tabButtons = evt.currentTarget.parentNode.getElementsByClassName("tab-button");
+        for (let i = 0; i < tabButtons.length; i++) {
+            tabButtons[i].classList.remove("active");
         }
-        
-        // Run on page load and resize
-        window.onload = checkScreenSize;
-        window.onresize = checkScreenSize;
-    </script>
+
+        // Show the selected tab and mark the button as active
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+
+    // Automatically set the default tab based on today's date
+    window.onload = function () {
+        const today = new Date();
+        const day = today.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+        const dayTabs = {
+            1: "monday-tab",
+            2: "tuesday-tab",
+            4: "thursday-tab",
+            5: "friday-tab",
+            6: "saturday-tab"
+        };
+
+        const defaultTab = dayTabs[day] || "monday-tab"; // Default to Monday if no match
+        document.getElementById(defaultTab).classList.add("active");
+
+        const tabButtons = document.querySelectorAll(".tab-button");
+        tabButtons.forEach((button) => {
+            if (button.getAttribute("onclick").includes(defaultTab)) {
+                button.classList.add("active");
+            }
+        });
+    };
+</script>
 </body>
 </html>
