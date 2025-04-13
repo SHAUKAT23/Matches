@@ -163,7 +163,7 @@
         <div id="main-content">
             <!-- Schedule Tab Content -->
             <div id="schedule-tab" class="tab-content active">
-                <h2>Men's Match Schedule (ROUND 1)</h2>
+                <h2>Men's Match Schedule (ROUND 2)</h2>
 
                 <!-- Nested Tabs for Days -->
                 <div id="days-tabs" class="tabs">
@@ -199,14 +199,14 @@
                                 <div class="teams">MEN'S GOLD MATCH: Semifinal 1 Winner VS Semifinal 2 Winner</div>
                                 <div class="details">
                                     <p class="detail"><span class="icon">📅</span> Tuesday, 14th April 2025</p>
-                                    <p class="detail"><span class="icon">🕗</span> 9:30 PM</p>
+                                    <p class="detail"><span class="icon">🕗</span> 6:30 PM</p>
                                 </div>
                             </div>
                             <div class="match men">
                                 <div class="teams">MEN'S BRONZE MATCH: Semifinal 1 Loser VS Semifinal 2 Loser</div>
                                 <div class="details">
                                     <p class="detail"><span class="icon">📅</span> Tuesday, 14th April 2025</p>
-                                    <p class="detail"><span class="icon">🕗</span> 6:30 PM</p>
+                                    <p class="detail"><span class="icon">🕗</span> 9:30 PM</p>
                                 </div>
                             </div>
                         </div>
@@ -249,90 +249,46 @@
                         <p><strong>🥈 Silver:</strong> DESE</p>
                     </div>
                 </div>
+                <!--
                 <div class="mvp-section">
                     <h3>Women's MVP</h3>
                     <p id="mvp-placeholder">[MVP Name Placeholder]</p>
                 </div>
-                <style>
-                    .result-section {
-                        margin-top: 20px;
-                        text-align: center;
-                        background-color: #e3f2fd;
-                        padding: 15px;
-                        border-radius: 10px;
-                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                        animation: fadeIn 1.5s ease-in-out;
-                    }
-                    .result-section h3 {
-                        color: #1565c0;
-                        margin-bottom: 10px;
-                    }
-                    .result-frame {
-                        font-size: 1.2em;
-                        font-weight: bold;
-                        color: #0d47a1;
-                        padding: 10px;
-                        border: 2px solid #1565c0;
-                        border-radius: 8px;
-                        background-color: #ffffff;
-                        display: inline-block;
-                        animation: bounce 2s infinite;
-                    }
-                    .mvp-section {
-                        margin-top: 20px;
-                        text-align: center;
-                        background-color: #e3f2fd;
-                        padding: 15px;
-                        border-radius: 10px;
-                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                    }
-                    .mvp-section h3 {
-                        color: #1565c0;
-                        margin-bottom: 10px;
-                    }
-                    .mvp-section p {
-                        font-size: 1.2em;
-                        font-weight: bold;
-                        color: #0d47a1;
-                    }
-                    @keyframes fadeIn {
-                        from {
-                            opacity: 0;
-                        }
-                        to {
-                            opacity: 1;
-                        }
-                    }
-                    @keyframes bounce {
-                        0%, 100% {
-                            transform: translateY(0);
-                        }
-                        50% {
-                            transform: translateY(-10px);
-                        }
-                    }
-                </style>
+                -->
             </div>
         </div>
     </div>
 
 <script>
+    function openTab(evt, tabName, parentContainerId) {
+        // Get the parent container
+        const parentContainer = document.getElementById(parentContainerId);
+        
+        // Hide all tab contents within the parent container
+        const tabContents = parentContainer.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.remove("active");
+        }
+        
+        // Remove active class from all tab buttons
+        const tabButtons = parentContainer.getElementsByClassName("tab-button");
+        for (let i = 0; i < tabButtons.length; i++) {
+            tabButtons[i].classList.remove("active");
+        }
+        
+        // Show the selected tab content and mark the button as active
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+
     window.onload = function() {
         // Set default main tab
         document.getElementById("schedule-tab").classList.add("active");
         document.querySelector("#main-tabs .tab-button").classList.add("active");
         
-        // Set the active day tab
+        // Set default day tab
         document.getElementById("Monday-tab").classList.add("active");
-
-        // Find and set active day tab button
-        document.querySelectorAll("#days-tabs .tab-button").forEach(button => {
-            if (button.getAttribute("onclick").includes("Monday-tab")) {
-                button.classList.add("active");
-            } else {
-                button.classList.remove("active");
-            }
-        });
+        document.querySelector("#days-tabs .tab-button").classList.add("active");
     };
 </script>
 </body>
