@@ -173,7 +173,7 @@
                     <button class="tab-button" onclick="openTab(event, 'thursday-tab', 'days-content')">Thursday</button>
                     <button class="tab-button" onclick="openTab(event, 'friday-tab', 'days-content')">Friday</button>
                     <button class="tab-button" onclick="openTab(event, 'saturday-tab', 'days-content')">Saturday</button>
-                    <button class="tab-button" onclick="openTab(event, 'sunday-tab', 'days-content')">Sunday</button>
+                    <button class="tab-button" onclick="openTab(event, 'Monday-tab', 'days-content')">Monday 2</button>
                 </div>
 
                 <div id="days-content">
@@ -284,28 +284,21 @@
                         </div>
                     </div>
                     
-                    <!-- Sunday Tab Content -->
-                    <div id="sunday-tab" class="tab-content">
+                    <!-- Monday Tab Content -->
+                    <div id="Monday-tab" class="tab-content">
                         <div class="matches-container">
                             <div class="match men">
-                                <div class="teams">MEN'S SEMIFINAL 1: Pool A (1st)  VS Pool B (2nd)</div>
+                                <div class="teams">MEN'S SEMIFINAL 1: UG VS Civil</div>
                                 <div class="details">
-                                    <p class="detail"><span class="icon">📅</span> Sunday, 13th April 2025</p>
-                                    <p class="detail"><span class="icon">🕗</span> 8:30 AM</p>
-                                </div>
-                            </div>
-                            <div class="match men">
-                                <div class="teams">MEN'S SEMIFINAL QUALIFIER: Pool A (2nd) VS Pool Bv(3rd)</div>
-                                <div class="details">
-                                    <p class="detail"><span class="icon">📅</span> Sunday, 13th April 2025</p>
-                                    <p class="detail"><span class="icon">🕗</span> 5:00 PM</p>
+                                    <p class="detail"><span class="icon">📅</span> Monday, 13th April 2025</p>
+                                    <p class="detail"><span class="icon">🕗</span> 6:30 PM</p>
                                 </div>
                             </div>            
                             <div class="match men">
-                                <div class="teams">MEN'S SEMIFINAL 2: SEMIQUALIFIER WINNER VS Pool B (1st)</div>
+                                <div class="teams">MEN'S SEMIFINAL 2: BE VS Staff</div>
                                 <div class="details">
-                                    <p class="detail"><span class="icon">📅</span> Sunday, 13th April 2025</p>
-                                    <p class="detail"><span class="icon">🕗</span> 8:30 PM</p>                                            
+                                    <p class="detail"><span class="icon">📅</span> Monday, 13th April 2025</p>
+                                    <p class="detail"><span class="icon">🕗</span> 9:30 PM</p>                                            
                                 </div>
                             </div>
                         </div>
@@ -449,7 +442,7 @@
             
             // Set default day tab based on current day
             const today = new Date();
-            const day = today.getDay(); // 0=Sunday, 1=Monday, etc.
+            const day = today.getDay(); // 0=Monday, 1=Monday, etc.
             
             const dayTabs = {
                 1: "monday-tab",
