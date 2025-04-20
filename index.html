@@ -39,119 +39,40 @@
             font-size: 1.2em;
             color: #e63946;
         }
-        .matches-container {
+        .result-section {
             margin-bottom: 30px;
         }
-        .match {
+        .result-frame {
             background-color: #f1faee;
             padding: 20px;
-            margin-bottom: 20px;
             border-radius: 8px;
             border-left: 5px solid #1d3557;
+            margin-bottom: 20px;
         }
-        .match.men {
-            border-left: 5px solid #1d3557; /* Style for men's matches */
-        }
-        .match.women {
-            border-left: 5px solid #e63946; /* Style for women's matches */
-            background-color: #f9d9e2; /* A softer background color */
-        }
-        .teams {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #1d3557;
-            margin-bottom: 10px;
-        }
-        .details {
-            margin-left: 15px;
-        }
-        .detail {
+        .result-frame p {
             margin: 5px 0;
         }
-        .icon {
-            margin-right: 10px;
-        }
-        .cta {
+        .celebration {
             text-align: center;
-            margin: 30px 0;
-            font-weight: bold;
-            font-size: 1.2em;
+            margin-top: 50px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .celebration h2 {
             color: #e63946;
+            font-size: 2em;
+            margin-bottom: 20px;
         }
-        .schedule {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
+        .celebration p {
+            font-size: 1.2em;
+            color: #333;
         }
-        .poster-space {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .poster-space img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .table-container {
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #457b9d;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        .tabs {
-            overflow: hidden;
-            margin: 20px 0;
-            border-bottom: 2px solid #457b9d;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .tab-button {
-            background-color: #f1faee;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 5px 5px 0 0;
-            margin-right: 5px;
-            flex: 1;
-        }
-        .tab-button:hover {
-            background-color: #ddd;
-        }
-        .tab-button.active {
-            background-color: #457b9d;
-            color: white;
-        }
-        .tab-content {
-            display: none;
-            padding: 6px 12px;
-            animation: fadeEffect 1s;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        @keyframes fadeEffect {
-            from {opacity: 0;}
-            to {opacity: 1;}
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -161,85 +82,34 @@
         <h2>KHO-KHO MATCHES</h2>
         
         <div class="venue">
-            <p><span class="icon">📍</span> All matches at TMC Ground</p>
+            <p><span class="icon">📍</span> All matches were held at TMC Ground</p>
         </div>
         
-        <!-- Main Tab Navigation -->
-        <div id="main-tabs" class="tabs">
-            <button class="tab-button active" onclick="openTab(event, 'schedule-tab', 'main-content')">Schedule</button>
-            <button class="tab-button" onclick="openTab(event, 'results-tab', 'main-content')">Results</button>
+        <!-- Results Tab Content -->
+        <div id="results-tab" class="tab-content active">
+            <h2>Results</h2>
+            <div class="result-section">
+                <h3>Men's Results</h3>
+                <div class="result-frame">
+                    <p><strong>🥇 Gold:</strong> Civil</p>
+                    <p><strong>� Silver:</strong> Staff</p>
+                    <p><strong>🥉 Bronze:</strong> UG Juniors</p>
+                </div>
+            </div>
+            <div class="result-section">
+                <h3>Women's Results</h3>
+                <div class="result-frame">
+                    <p><strong>🥇 Gold:</strong> Civil</p>
+                    <p><strong>🥈 Silver:</strong> DESE</p>
+                </div>
+            </div>
         </div>
-        
-        <div id="main-content">
-            <!-- Schedule Tab Content -->
-            <div id="schedule-tab" class="tab-content active">
-                <h2>Men's Match Schedule (FINALS)</h2>
 
-                <div class="matches-container">
-                    <div class="match men">
-                        <div class="teams">MEN'S FINALS: Civil VS Staff</div>
-                        <div class="details">
-                            <p class="detail"><span class="icon">📅</span> Today, 20th April 2025</p>
-                            <p class="detail"><span class="icon">🕗</span> 9:30 PM</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Space for Poster -->
-                <div class="poster-space">
-                    <p>Match:</p>
-                    <img src="game.jpg" alt="Tournament Poster">
-                </div>
-            </div>
-            
-            <!-- Results Tab Content -->
-            <div id="results-tab" class="tab-content">
-                <h2>Results</h2>
-                <div class="result-section">
-                    <h3>Men's Results</h3>
-                    <div class="result-frame">
-                        <p><strong>🥇 Gold Match:</strong> Civil VS Staff (Finals at 9:30 PM)</p>
-                        <p><strong>🥉 Bronze:</strong> UG Juniors</p>
-                    </div>
-                </div>
-                <div class="result-section">
-                    <h3>Women's Results</h3>
-                    <div class="result-frame">
-                        <p><strong>🥇 Gold:</strong> Civil</p>
-                        <p><strong>🥈 Silver:</strong> DESE</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Celebration and Thank You Note -->
+        <div class="celebration">
+            <h2>🎉 Congratulations to All Participants! 🎉</h2>
+            <p>Thank you for making the Spectrum Tournament a grand success. See you next year!</p>
         </div>
     </div>
-
-<script>
-    function openTab(evt, tabName, parentContainerId) {
-        // Get the parent container
-        const parentContainer = document.getElementById(parentContainerId);
-        
-        // Hide all tab contents within the parent container
-        const tabContents = parentContainer.getElementsByClassName("tab-content");
-        for (let i = 0; i < tabContents.length; i++) {
-            tabContents[i].classList.remove("active");
-        }
-        
-        // Remove active class from all tab buttons
-        const tabButtons = parentContainer.getElementsByClassName("tab-button");
-        for (let i = 0; i < tabButtons.length; i++) {
-            tabButtons[i].classList.remove("active");
-        }
-        
-        // Show the selected tab content and mark the button as active
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
-    }
-
-    window.onload = function() {
-        // Set default main tab
-        document.getElementById("schedule-tab").classList.add("active");
-        document.querySelector("#main-tabs .tab-button").classList.add("active");
-    };
-</script>
 </body>
 </html>
