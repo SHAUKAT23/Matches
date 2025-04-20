@@ -13,7 +13,7 @@
             padding: 20px;
             background-color: #f5f5f5;
             color: #333;
-            overflow: hidden; /* Prevent scrollbars during animation */
+            overflow-x: hidden; /* Only prevent horizontal scrolling */
         }
         .container {
             background-color: white;
@@ -89,38 +89,8 @@
             100% { transform: scale(1); }
         }
 
-        /* Blasting Animation */
-        .blast {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1000;
-        }
-        .blast span {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: var(--color, #e63946);
-            border-radius: 50%;
-            animation: explode 2s ease-out forwards;
-        }
-        @keyframes explode {
-            0% {
-                transform: scale(1) translate(0, 0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(2) translate(calc(200px - 400px * var(--x)), calc(200px - 400px * var(--y)));
-                opacity: 0;
-            }
-        }
-
-        /* Celebration Stickers */
-        .stickers {
+        /* Confetti Animation */
+        .confetti-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -129,24 +99,87 @@
             pointer-events: none;
             z-index: 1000;
         }
-        .stickers img {
+        .confetti {
             position: absolute;
-            width: 50px;
-            height: 50px;
-            animation: float 3s ease-in-out infinite;
+            width: 10px;
+            height: 16px;
+            background-color: var(--color);
+            animation: fall 5s linear infinite;
+            opacity: 0.7;
         }
-        @keyframes float {
+        .confetti.round {
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+        }
+        .confetti.strip {
+            width: 6px;
+            height: 20px;
+            animation: fall-rotate 5s linear infinite;
+        }
+        .confetti.zigzag {
+            width: 5px;
+            height: 15px;
+            clip-path: polygon(0% 0%, 100% 0%, 50% 33%, 100% 66%, 0% 100%);
+        }
+        @keyframes fall {
             0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
+                top: -10%;
+                transform: translateX(0);
+                opacity: 0.7;
+            }
+            10% {
+                transform: translateX(10px);
+            }
+            20% {
+                transform: translateX(-10px);
+            }
+            30% {
+                transform: translateX(15px);
+            }
+            40% {
+                transform: translateX(-15px);
             }
             50% {
-                transform: translateY(-20px) rotate(180deg);
-                opacity: 0.8;
+                transform: translateX(20px);
+            }
+            60% {
+                transform: translateX(-20px);
+            }
+            70% {
+                transform: translateX(15px);
+            }
+            80% {
+                transform: translateX(-15px);
+            }
+            90% {
+                transform: translateX(10px);
             }
             100% {
-                transform: translateY(0) rotate(360deg);
-                opacity: 1;
+                top: 100%;
+                transform: translateX(-10px);
+                opacity: 0.3;
+            }
+        }
+        @keyframes fall-rotate {
+            0% {
+                top: -10%;
+                transform: rotate(0deg);
+                opacity: 0.7;
+            }
+            25% {
+                transform: rotate(90deg) translateX(10px);
+            }
+            50% {
+                transform: rotate(180deg) translateX(-10px);
+            }
+            75% {
+                transform: rotate(270deg) translateX(10px);
+            }
+            100% {
+                top: 100%;
+                transform: rotate(360deg) translateX(-10px);
+                opacity: 0.3;
             }
         }
 
@@ -175,11 +208,8 @@
     </style>
 </head>
 <body>
-    <!-- Blasting Animation Container -->
-    <div class="blast" id="blast-container"></div>
-
-    <!-- Celebration Stickers -->
-    <div class="stickers" id="stickers-container"></div>
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confetti-container"></div>
 
     <div class="container">
         <h1>SPECTRUM TOURNAMENT</h1>
@@ -219,41 +249,35 @@
     </div>
 
     <script>
-        // Infinite Blasting Animation Script
-        function createBlast() {
-            const blastContainer = document.getElementById('blast-container');
-            const colors = ['#e63946', '#457b9d', '#f4a261', '#2a9d8f', '#e9c46a', '#ffd700'];
-
-            for (let i = 0; i < 50; i++) { // Create 50 particles per blast
-                const blast = document.createElement('span');
-                blast.style.setProperty('--x', Math.random());
-                blast.style.setProperty('--y', Math.random());
-                blast.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
-                blastContainer.appendChild(blast);
-
-                // Remove each particle after animation ends
+        // Create confetti across the whole screen
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti-container');
+            const colors = ['#e63946', '#457b9d', '#f4a261', '#2a9d8f', '#e9c46a', '#ffd700', '#ff9a3c', '#a8dadc', '#48cae4'];
+            const types = ['round', 'strip', 'zigzag', '']; // Empty string for default shape
+            
+            // Create 10 confetti pieces scattered across the screen width
+            for (let i = 0; i < 10; i++) {
+                const confetti = document.createElement('div');
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const type = types[Math.floor(Math.random() * types.length)];
+                const left = Math.random() * 100;
+                
+                // Set confetti appearance
+                confetti.classList.add('confetti');
+                if (type) confetti.classList.add(type);
+                confetti.style.setProperty('--color', color);
+                confetti.style.left = `${left}%`;
+                
+                // Add random delay for a staggered effect
+                const delay = Math.random() * 3;
+                confetti.style.animationDelay = `${delay}s`;
+                
+                confettiContainer.appendChild(confetti);
+                
+                // Remove confetti after animation completes
                 setTimeout(() => {
-                    blast.remove();
-                }, 2000);
-            }
-        }
-
-        // Celebration Stickers Script
-        function createStickers() {
-            const stickersContainer = document.getElementById('stickers-container');
-            const stickers = ['🎉', '✨', '🎊', '🥳', '🏆', '🎯', '🎖️'];
-
-            for (let i = 0; i < 20; i++) { // Create 20 stickers
-                const sticker = document.createElement('img');
-                sticker.src = `https://twemoji.maxcdn.com/v/latest/svg/${stickers[i % stickers.length].codePointAt(0).toString(16)}.svg`;
-                sticker.style.left = `${Math.random() * 100}vw`;
-                sticker.style.top = `${Math.random() * 100}vh`;
-                stickersContainer.appendChild(sticker);
-
-                // Remove stickers after animation ends
-                setTimeout(() => {
-                    sticker.remove();
-                }, 3000);
+                    confetti.remove();
+                }, 5000 + (delay * 1000));
             }
         }
 
@@ -269,9 +293,10 @@
 
         // Trigger animations continuously
         window.onload = function() {
-            setInterval(createBlast, 1000);
-            setInterval(createStickers, 3000);
             highlightWinners();
+            
+            // Create confetti continuously
+            setInterval(createConfetti, 500);
         };
     </script>
 </body>
