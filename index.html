@@ -13,12 +13,15 @@
             padding: 20px;
             background-color: #f5f5f5;
             color: #333;
+            overflow: hidden; /* Prevent scrollbars during animation */
         }
         .container {
             background-color: white;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
         }
         h1 {
             color: #e63946;
@@ -48,6 +51,11 @@
             border-radius: 8px;
             border-left: 5px solid #1d3557;
             margin-bottom: 20px;
+            transition: all 0.5s ease;
+        }
+        .result-frame:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         .result-frame p {
             margin: 5px 0;
@@ -61,6 +69,7 @@
             color: #e63946;
             font-size: 2em;
             margin-bottom: 20px;
+            animation: pulse 2s infinite ease-in-out;
         }
         .celebration p {
             font-size: 1.2em;
@@ -74,9 +83,104 @@
                 opacity: 1;
             }
         }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Blasting Animation */
+        .blast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .blast span {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--color, #e63946);
+            border-radius: 50%;
+            animation: explode 2s ease-out forwards;
+        }
+        @keyframes explode {
+            0% {
+                transform: scale(1) translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2) translate(calc(200px - 400px * var(--x)), calc(200px - 400px * var(--y)));
+                opacity: 0;
+            }
+        }
+
+        /* Celebration Stickers */
+        .stickers {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .stickers img {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        /* Trophy Animation */
+        .trophy {
+            text-align: center;
+            font-size: 5em;
+            margin: 20px auto;
+            animation: shine 3s infinite alternate;
+        }
+        @keyframes shine {
+            0% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); }
+        }
+
+        /* Medal Highlight Animation */
+        .medal {
+            display: inline-block;
+            animation: wobble 2s infinite;
+        }
+        @keyframes wobble {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
     </style>
 </head>
 <body>
+    <!-- Blasting Animation Container -->
+    <div class="blast" id="blast-container"></div>
+
+    <!-- Celebration Stickers -->
+    <div class="stickers" id="stickers-container"></div>
+
     <div class="container">
         <h1>SPECTRUM TOURNAMENT</h1>
         <h2>KHO-KHO MATCHES</h2>
@@ -85,22 +189,24 @@
             <p><span class="icon">📍</span> All matches were held at TMC Ground</p>
         </div>
         
+        <div class="trophy">🏆</div>
+        
         <!-- Results Tab Content -->
         <div id="results-tab" class="tab-content active">
             <h2>Results</h2>
             <div class="result-section">
                 <h3>Men's Results</h3>
                 <div class="result-frame">
-                    <p><strong>🥇 Gold:</strong> Civil</p>
-                    <p><strong>� Silver:</strong> Staff</p>
-                    <p><strong>🥉 Bronze:</strong> UG Juniors</p>
+                    <p><span class="medal">🥇</span> <strong>Gold:</strong> Civil</p>
+                    <p><span class="medal">🥈</span> <strong>Silver:</strong> Staff</p>
+                    <p><span class="medal">🥉</span> <strong>Bronze:</strong> UG Juniors</p>
                 </div>
             </div>
             <div class="result-section">
                 <h3>Women's Results</h3>
                 <div class="result-frame">
-                    <p><strong>🥇 Gold:</strong> Civil</p>
-                    <p><strong>🥈 Silver:</strong> DESE</p>
+                    <p><span class="medal">🥇</span> <strong>Gold:</strong> Civil</p>
+                    <p><span class="medal">🥈</span> <strong>Silver:</strong> DESE</p>
                 </div>
             </div>
         </div>
@@ -111,5 +217,62 @@
             <p>Thank you for making the Spectrum Tournament a grand success. See you next year!</p>
         </div>
     </div>
+
+    <script>
+        // Infinite Blasting Animation Script
+        function createBlast() {
+            const blastContainer = document.getElementById('blast-container');
+            const colors = ['#e63946', '#457b9d', '#f4a261', '#2a9d8f', '#e9c46a', '#ffd700'];
+
+            for (let i = 0; i < 50; i++) { // Create 50 particles per blast
+                const blast = document.createElement('span');
+                blast.style.setProperty('--x', Math.random());
+                blast.style.setProperty('--y', Math.random());
+                blast.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+                blastContainer.appendChild(blast);
+
+                // Remove each particle after animation ends
+                setTimeout(() => {
+                    blast.remove();
+                }, 2000);
+            }
+        }
+
+        // Celebration Stickers Script
+        function createStickers() {
+            const stickersContainer = document.getElementById('stickers-container');
+            const stickers = ['🎉', '✨', '🎊', '🥳', '🏆', '🎯', '🎖️'];
+
+            for (let i = 0; i < 20; i++) { // Create 20 stickers
+                const sticker = document.createElement('img');
+                sticker.src = `https://twemoji.maxcdn.com/v/latest/svg/${stickers[i % stickers.length].codePointAt(0).toString(16)}.svg`;
+                sticker.style.left = `${Math.random() * 100}vw`;
+                sticker.style.top = `${Math.random() * 100}vh`;
+                stickersContainer.appendChild(sticker);
+
+                // Remove stickers after animation ends
+                setTimeout(() => {
+                    sticker.remove();
+                }, 3000);
+            }
+        }
+
+        // Highlight winners with special effect
+        function highlightWinners() {
+            const goldWinners = document.querySelectorAll('.result-frame p:first-child');
+            goldWinners.forEach(winner => {
+                winner.style.fontWeight = 'bold';
+                winner.style.color = '#e63946';
+                winner.style.fontSize = '1.2em';
+            });
+        }
+
+        // Trigger animations continuously
+        window.onload = function() {
+            setInterval(createBlast, 1000);
+            setInterval(createStickers, 3000);
+            highlightWinners();
+        };
+    </script>
 </body>
 </html>
